@@ -21,6 +21,14 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/YuMaxCat/Rb-Script/ma
 
 把 URL 末尾的文件名换成其他脚本名即可运行别的脚本。
 
+`Abysall` 是多文件脚本，入口也一样是 load 形式：
+
+```lua
+loadstring(game:HttpGet("https://gh-proxy.com/https://raw.githubusercontent.com/YuMaxCat/Rb-Script/main/scripts/Abysall.lua"))()
+```
+
+直连 `raw.githubusercontent.com` 不通时，用上面这种加 `https://gh-proxy.com/` 前缀的地址即可。
+
 - 脚本支持重复执行，会自动清理上一次的界面实例。
 - `Yu HUB` 会从 WindUI 官方仓库在线加载 UI 库，需要网络可用。
 - `Abysall` 的模块放在 [`scripts/abysall/`](scripts/abysall/)，加载器首次运行会把用到的模块下载到本地 `abysall/` 目录并缓存，之后走本地；raw.githubusercontent 的请求会自动改走 gh-proxy。
