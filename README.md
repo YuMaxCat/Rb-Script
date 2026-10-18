@@ -1,2 +1,2 @@
 # Rb-Script
-Rb云端脚本
+由羽Max创建的Roblox云端脚本，这些脚本是开源的
