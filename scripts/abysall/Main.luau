@@ -78,7 +78,8 @@ end
 
 Abysall.Interface = loadstring(readfile("abysall/Interface.luau"))()
 
-Abysall.Analytics = loadstring(readfile("abysall/Analytics.luau"))()
+-- Analytics 已剥离：原模块加载后无条件把用户名/UID/执行器/游戏信息上报作者 Discord webhook
+-- Abysall.Analytics = loadstring(readfile("abysall/Analytics.luau"))()
 
 
 Abysall.SavePath = "Doors/Game"

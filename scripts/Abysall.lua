@@ -31,6 +31,8 @@ if type(oldReq) == "function" then
 end
 
 -- 模块读取：本地优先，缺失时从仓库下载并写入本地缓存
+-- 本地缓存目录带版本号：改动模块后把 CacheTag 改一下，旧缓存自动失效
+local CacheTag = "abysall_v2"
 local Cache = {}
 local oldRead = readfile
 
@@ -41,7 +43,11 @@ readfile = function(path)
 	end
 	if Cache[rel] then return Cache[rel] end
 
-	local ok, data = pcall(oldRead, path)
+	local localPath = path
+	if rel:match("%.luau?$") then
+		localPath = CacheTag .. "/" .. rel
+	end
+	local ok, data = pcall(oldRead, localPath)
 	if ok and type(data) == "string" then
 		Cache[rel] = data
 		return data
@@ -55,7 +61,7 @@ readfile = function(path)
 	end
 
 	Cache[rel] = data2
-	pcall(writefile, path, data2)
+	pcall(writefile, localPath, data2)
 	return data2
 end
 
